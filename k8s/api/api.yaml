@@ -1,0 +1,48 @@
+# kubernetes-fastapi LoadBalancer Service
+# Enables the pods in a deployment to be accessible from outside the cluster
+apiVersion: v1
+kind: Service
+metadata:
+  name: enc-api-svc
+spec:
+  selector:
+    app: enc-api
+  ports:
+    - protocol: "TCP"
+      port: 8080
+      targetPort: 8080
+  type: LoadBalancer
+
+---
+# enc-api deployment
+# Defines the deployment of the app running in a pod on any worker node
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: enc-api
+  labels:
+    app: enc-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: enc-api
+  template:
+    metadata:
+      labels:
+        app: enc-api
+    spec:
+      containers:
+        - name: enc-api
+          image: dpinedaj/enc-fastapi:1.0.0
+          ports:
+            - containerPort: 8080
+          imagePullPolicy: Always
+          resources:
+            requests:
+              cpu: "250m"
+          env:
+            - name: encryption_key
+              value: very_secure_key
+            - name: encryption_iv
+              value: pIbTlr3fyPHnxosRA3Ethg==
