@@ -1,10 +1,5 @@
 from fastapi import FastAPI
 from service.api.api import router as api_router
-import os
-
-os.environ["encryption_key"] = "@NcRfUjXnZr4u7x!A%D*G-KaPdSgVkYp"
-os.environ["encryption_iv"] = "pIbTlr3fyPHnxosRA3Ethg=="
-
 
 app = FastAPI(
     title="encrypt-fastapi",
