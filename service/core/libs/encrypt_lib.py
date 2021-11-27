@@ -24,6 +24,8 @@ def encrypt_text(text: str, iv: str, key: str, encoding='utf-8') -> str:
 
     _encrypted = ""
     try:
+        if text is None:
+            return None
         _key = hashlib.sha256(key.encode()).digest()
         _text = __pack(text)
         _vector = base64.b64decode(iv.encode("ascii"))
@@ -55,6 +57,8 @@ def decrypt_text(text: Union[bytes, str],
 
     _decrypted = ""
     try:
+        if text is None:
+            return None
         _text = text if type(text) == bytes else text.encode(decode)
         _key = hashlib.sha256(key.encode()).digest()
         _encrypted = base64.b64decode(_text)

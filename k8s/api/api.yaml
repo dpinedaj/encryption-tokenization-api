@@ -43,6 +43,6 @@ spec:
               cpu: "250m"
           env:
             - name: encryption_key
-              value: very_secure_key
+              value: "@NcRfUjXnZr4u7x!A%D*G-KaPdSgVkYp"
             - name: encryption_iv
-              value: pIbTlr3fyPHnxosRA3Ethg==
+              value: "pIbTlr3fyPHnxosRA3Ethg=="

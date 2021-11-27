@@ -15,25 +15,25 @@ class KeyHandler:
     def encryption_iv(self):
         return self.load_variable("encryption_iv")
 
-    @property
-    def database_host(self):
-        return self.load_variable("POSTGRES_HOST")
+    # @property
+    # def database_host(self):
+    #     return self.load_variable("POSTGRES_HOST")
     
-    @property
-    def database_port(self):
-        return self.load_variable("POSTGRES_PORT")
+    # @property
+    # def database_port(self):
+    #     return self.load_variable("POSTGRES_PORT")
 
-    @property
-    def database_user(self):
-        return self.load_variable("POSTGRES_USER")
+    # @property
+    # def database_user(self):
+    #     return self.load_variable("POSTGRES_USER")
 
-    @property
-    def database_password(self):
-        return self.load_variable("POSTGRES_PASSWORD")
+    # @property
+    # def database_password(self):
+    #     return self.load_variable("POSTGRES_PASSWORD")
 
-    @property
-    def database_db(self):
-        return self.load_variable("POSTGRES_DB")
+    # @property
+    # def database_db(self):
+    #     return self.load_variable("POSTGRES_DB")
 
 
     def load_variable(self, variable):
