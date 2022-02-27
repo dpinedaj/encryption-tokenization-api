@@ -2,10 +2,13 @@ from service.core.models.tokenize import Tokenize
 from service.core.handlers.db_session import session
 from service.core.libs.commons import parse_list_str
 from typing import Union, List, Tuple
-from service.core.handlers.key_handler import KeyHandler
 import hmac
 import hashlib
 import base64
+
+
+from service.core.handlers.key_handler import KeyHandler
+from service.core.exceptions import TokenizerException
 
 
 def tokenize_value(value: str) -> str:
@@ -42,5 +45,8 @@ def detokenize_values(tokens: Union[List[str], str], table_name: str) -> List[Tu
     result = [()]
     if tokens:
         result = [table.lookup_value("token", token) for token in tokens]
-        assert len(result) > 0, "Not Valid Candidate for tokens"
+        result = [i for i in result if i is not None]
+        if len(result) == 0:
+            raise TokenizerException("Not Valid Candidates for tokens")
     return result
+

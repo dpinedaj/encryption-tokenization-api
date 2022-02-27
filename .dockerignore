@@ -2,3 +2,4 @@ docker-compose.yml
 Dockerfile
 README.md
 k8s
+Pipfile.lock

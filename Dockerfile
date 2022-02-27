@@ -3,7 +3,7 @@ FROM python:3.8
 
 COPY . .
 RUN pip install pipenv
-RUN pipenv install --system --deploy
+RUN pipenv lock && pipenv install --system --deploy
 
 
 EXPOSE 8080
